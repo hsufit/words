@@ -14,6 +14,11 @@ print("import path : "+import_path)
 #mod_import.importAll(import_path)
 #mod_wordlist.show_wordlist()
 
-for fun in inspect.getmembers(mod_wordlist, inspect.isfunction) :
-  print(fun)
+Wlist = mod_wordlist.wordlist()
+Wlist.show_word()
 
+
+
+"""for fun in inspect.getmembers(mod_wordlist, inspect.isfunction) :
+  print(fun)
+"""
