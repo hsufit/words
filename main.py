@@ -16,7 +16,7 @@ print("import path : "+import_path)
 
 Wlist = mod_wordlist.wordlist()
 Wlist.show_word()
-
+print(Wlist.search_word("poll"))
 
 
 """for fun in inspect.getmembers(mod_wordlist, inspect.isfunction) :

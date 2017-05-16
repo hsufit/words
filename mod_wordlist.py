@@ -22,6 +22,10 @@ class wordlist :
       self.tail = self.tail.next
     file_wordlist.close()
 
+  def swap_word(self, word1, word2) :
+    """swop two words
+    """
+
   def sort_wordlist() :
     """ Sorting the list if addend is not already able to work
     """
@@ -35,18 +39,31 @@ class wordlist :
     """A function to delete the word
     """
 
-  def search_word() :
+  def search_word(self, word) :
     """A function to search the word, and return the word  position
     """
+    tmp = self.head.next
+    k=1
+    while tmp != None :
+      if tmp.word == word :
+        print(word, end="")
+        return k
+      else :
+        tmp = tmp.next
+      k += 1
+    k=-1
+    return k
 
   def show_word(self) :
     """A function show all words in wordlist
     """
     tmp = self.head.next
+    k=0
     while tmp != None :
+      k += 1
       print(tmp, end="")
       tmp = tmp.next
-
+    print("total wordlist length is", k)
 
 """
 def show_wordlist() :
