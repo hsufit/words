@@ -7,9 +7,24 @@ class word :
     self.word = word
     self.next = next
 
-  def __str__(self):
+  def __str__(self) :
     return str(self.word)
 
+  def __lt__(self, other) :
+    return self.word < other.word
+  def __le__(self, other) :
+    return self.word <= other.word
+  def __eq__(self, other) :
+    return self.word == other.word
+  def __ne__(self, other) :
+    return self.word != other.word
+  def __gt__(self, other) :
+    return self.word > other.word
+  def __ge__(self, other) :
+    return self.word >= other.word
+
+#  def __del__(self) :
+#    print("delete", self)  #print for debugging
 
 class wordlist :
   def __init__(self) :
@@ -30,36 +45,44 @@ class wordlist :
     """ Sorting the list if addend is not already able to work
     """
 
-  def append_word(self) :
+  def append_word(self, w) :
     """ Append the word at alphabet sorted position
     """
-    
-
-  def delete_word() :
-    """A function to delete the word
-    """
+    W = word(w)
+    tmp = self.head
+    while tmp is not None :
+      if tmp.next is None :
+        tmp.next = W
+        return W
+      elif W<tmp.next :
+        word.next = tmp.next
+        tmp.next = W
+        return W
+      else :
+        tmp = tmp.next
+    return -1
 
   def search_word(self, word) :
     """A function to search the word, and return the word  position
+       return -1 if not found
     """
     tmp = self.head.next
     k=1
-    while tmp != None :
+    while tmp is not None :
       if tmp.word == word :
-        print(word, end="")
+        print(word)
         return k
       else :
         tmp = tmp.next
       k += 1
-    k=-1
-    return k
+    return -1
 
   def show_word(self) :
     """A function show all words in wordlist
     """
     tmp = self.head.next
     k=0
-    while tmp != None :
+    while tmp is not None :
       k += 1
       print(tmp, end="")
       tmp = tmp.next
