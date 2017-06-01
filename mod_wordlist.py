@@ -27,23 +27,14 @@ class word :
 #    print("delete", self)  #print for debugging
 
 class wordlist :
-  def __init__(self) :
+  def __init__(self, wordfile = "wordlist") :
     self.head = word("")
     self.tail = self.head
-    wordlist_path = os.path.join(".", "wordlist", "wordlist")
+    wordlist_path = os.path.join(".", "wordlist", wordfile)
     file_wordlist = open(wordlist_path, 'r')
     for line in file_wordlist.readlines() :
-      self.tail.next = word(line)
-      self.tail = self.tail.next
+      self.append_word(line)
     file_wordlist.close()
-
-  def swap_word(self, word1, word2) :
-    """swop two words
-    """
-
-  def sort_wordlist() :
-    """ Sorting the list if addend is not already able to work
-    """
 
   def append_word(self, w) :
     """ Append the word at alphabet sorted position
@@ -55,7 +46,7 @@ class wordlist :
         tmp.next = W
         return W
       elif W<tmp.next :
-        word.next = tmp.next
+        W.next = tmp.next
         tmp.next = W
         return W
       else :
@@ -63,19 +54,26 @@ class wordlist :
     return -1
 
   def search_word(self, word) :
-    """A function to search the word, and return the word  position
-       return -1 if not found
+    """A function to search the word, and return the previous word object
+       return None if not found
     """
-    tmp = self.head.next
-    k=1
-    while tmp is not None :
-      if tmp.word == word :
-        print(word)
-        return k
+    tmp = self.head
+    while tmp.next is not None :
+      if tmp.next.word == word :
+        return tmp
       else :
         tmp = tmp.next
-      k += 1
-    return -1
+    return None
+
+  def delete_word(self, word) :
+    """A function for deleting a word
+    """
+    tmp = self.search_word(word)
+    if tmp is None :
+      return False
+    else :
+      tmp.next = tmp.next.next
+      return True
 
   def show_word(self) :
     """A function show all words in wordlist
@@ -87,16 +85,6 @@ class wordlist :
       print(tmp, end="")
       tmp = tmp.next
     print("total wordlist length is", k)
-
-"""
-def show_wordlist() :
-  wordlist_path = os.path.join(".", "wordlist", "wordlist")
-  file_wordlist = open(wordlist_path, 'r')
-  for line in file_wordlist.readlines() :
-    print(line, end = '')
-  file_wordlist.close()
-"""
-
 
 
 

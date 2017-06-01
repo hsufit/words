@@ -27,8 +27,8 @@ def importAll(import_path) :
       file_import = open(os.path.join(dirPath, f))
       print("Processing file : "+f)
       for line in file_import.readlines() :
-        file_wordList.write(line)
-      file_wordList.close()
+        file_wordList.write(line.lower())
+      file_import.close()
 
 
 

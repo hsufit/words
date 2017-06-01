@@ -16,15 +16,17 @@ print("import path : "+import_path)
 
 #mod_import.listAll(import_path)
 #mod_import.importAll(import_path)
-#mod_wordlist.show_wordlist()
 
-Wlist = mod_wordlist.wordlist()
+
+Wlist = mod_wordlist.wordlist("importwords")
 Wlist.show_word()
 print(Wlist.search_word("poll"))
 
-print(Wlist.search_word("Hello"))
-print("append : ", Wlist.append_word("Hello"))
-print(Wlist.search_word("Hello"))
+print("search : ", Wlist.search_word("hello"))
+print("append : ", Wlist.append_word("hello"))
+print("search : ", Wlist.search_word("hello").next)
+print("deleat : ", Wlist.delete_word("hello"))
+print("search : ", Wlist.search_word("hello"))
 
 
 """for fun in inspect.getmembers(mod_wordlist, inspect.isfunction) :
