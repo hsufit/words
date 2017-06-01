@@ -29,7 +29,7 @@ def importAll(import_path) :
       for line in file_import.readlines() :
         file_wordList.write(line.lower())
       file_import.close()
-
+  file_wordList.close() 
 
 
 
